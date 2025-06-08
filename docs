@@ -1,0 +1,42 @@
+smart-env-robot/
+├── README.md
+├── docs/
+│   └── architecture.png        # 系统架构图、模块通信流程
+├── backend/
+│   ├── app.py                  # 主 Flask/FastAPI 程序，接收数据并提供 API
+│   ├── face_recognition.py     # 接收并处理人脸识别图像/数据
+│   ├── danger_detection.py     # 危险动作识别模型推理
+│   ├── db.py                   # 数据库连接与操作
+│   ├── config.py               # 配置文件（端口、路径、API 密钥等）
+│   ├── utils.py                # 通用工具函数
+│   └── requirements.txt        # 后端依赖
+│
+├── frontend/
+│   └── wechat-miniprogram/     # 微信小程序项目文件夹
+│       ├── pages/
+│       ├── utils/
+│       ├── app.js
+│       └── project.config.json
+│
+├── devices/
+│   ├── sensor-node/
+│   │   ├── main.ino            # ESP32 环境采集节点（温湿度、CO₂、烟雾等）
+│   │   ├── wifi_config.h       # WiFi 连接配置
+│   │   └── utils.h             # JSON 打包、传感器采样等通用函数
+│   │
+│   └── vision-node/
+│       ├── main.py             # Raspberry Pi 或 Jetson Nano 脚本（摄像头输入）
+│       ├── face_detect.py      # 人脸识别子模块
+│       ├── action_detect.py    # 危险动作识别子模块（模型调用）
+│       └── send_data.py        # 将数据打包后上传服务器
+│
+├── models/
+│   ├── action_model.tflite     # 危险动作识别模型
+│   └── face_model.dat          # 人脸识别模型（如 Dlib）
+│
+├── data/
+│   ├── logs/
+│   └── samples/
+│       └── test_video.mp4      # 示例数据
+│
+└── .gitignore
